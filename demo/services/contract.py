@@ -964,13 +964,13 @@ class ContractService:
             }
 
     # 加载合同分类映射
-    def load_contract_categories(self, base_dir, contract_type):
+    def load_contract_categories(self, template_dir, contract_type):
         """
         加载合同类型分类映射，如果不存在_contract_categories.json，则直接读取txt关键词文件
         """
         try:
             # 首先尝试加载JSON文件（如果存在）
-            category_path = os.path.join(base_dir, "contracts", contract_type, "关键词", "_contract_categories.json")
+            category_path = os.path.join(template_dir, contract_type, "关键词", "_contract_categories.json")
             if os.path.exists(category_path):
                 try:
                     with open(category_path, 'r', encoding='utf-8') as f:
@@ -983,7 +983,7 @@ class ContractService:
             categories_map = {}
             
             # 确保路径存在
-            keywords_folder = os.path.join(base_dir, "contracts", contract_type, "关键词")
+            keywords_folder = os.path.join(template_dir, contract_type, "关键词")
             if not os.path.exists(keywords_folder):
                 print(f"关键词文件夹不存在: {keywords_folder}")
                 return {}

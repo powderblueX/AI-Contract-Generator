@@ -52,13 +52,13 @@ if not exist environment.yml (
 )
 
 echo Checking existing environments...
-conda env list | findstr /rc:"^ *contract_generation " >nul
+conda env list | findstr /rc:"^ *contract_generator " >nul
 if errorlevel 1 (
     echo Creating new environment...
-    conda env create -f environment.yml --quiet
+    conda env create -f environment.yml
 ) else (
     echo Updating existing environment...
-    conda env update -f environment.yml --quiet
+    conda env update -f environment.yml
 )
 
 if errorlevel 1 (
@@ -70,9 +70,9 @@ if errorlevel 1 (
 
 REM Stage 4: Safe environment activation
 echo [4/5] Activating environment...
-call "%CONDA_BASE%\Scripts\activate.bat" contract_generation || (
+call "%CONDA_BASE%\Scripts\activate.bat" contract_generator || (
     echo [ERROR] Activation failed
-    echo Try manual activation: conda activate contract_generation
+    echo Try manual activation: conda activate contract_generator
     pause
     exit /b 1
 )

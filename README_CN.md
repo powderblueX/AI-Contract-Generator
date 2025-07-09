@@ -45,7 +45,8 @@
 ## 项目结构
 ```
 AI-Contract-Generator/
-├── README.md                   # 项目说明文档
+├── README.md                   # 英文项目说明文档
+├── README_CN.md                # 中文项目说明文档
 ├── demo/                       # 应用程序主目录
 │   ├── __init__.py
 │   ├── contracts/              # 合同模板和资源

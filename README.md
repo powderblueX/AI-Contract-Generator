@@ -49,6 +49,7 @@ The Contract Generation System is an AI-powered automated contract creation plat
 ```
 contract_generation/
 ├── README.md                   # Project documentation
+├── README_CN.md                # Project documentation (Chinese)
 ├── demo/                       # Main application directory
 │   ├── __init__.py
 │   ├── contracts/              # Contract templates and resources

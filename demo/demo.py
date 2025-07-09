@@ -135,7 +135,9 @@ class ContractGenerator(QMainWindow):
         self.progress_bar.setVisible(True)
         self.progress_bar.setValue(0)
         self.status_bar.showMessage('正在处理推荐任务...')
+        # 推荐和生成按钮都禁用
         self.recommend_btn.setEnabled(False)
+        self.generate_btn.setEnabled(False)
         
         # 创建后台工作线程
         self.recommendation_worker = RecommendationWorker(
@@ -165,8 +167,9 @@ class ContractGenerator(QMainWindow):
 
     def handle_recommendation_result(self, result):
         """处理推荐结果"""
-        # 重新启用按钮
+        # 推荐和生成按钮恢复
         self.recommend_btn.setEnabled(True)
+        self.generate_btn.setEnabled(True)
         self.progress_bar.setVisible(False)
         
         if result["status"] == "failed":
@@ -234,6 +237,8 @@ class ContractGenerator(QMainWindow):
         self.progress_bar.setVisible(True)
         self.progress_bar.setValue(0)
         self.status_bar.showMessage('正在处理合同生成任务...')
+        # 推荐和生成按钮都禁用
+        self.recommend_btn.setEnabled(False)
         self.generate_btn.setEnabled(False)
         
         # 创建后台工作线程
@@ -255,8 +260,9 @@ class ContractGenerator(QMainWindow):
 
     def handle_generation_result(self, result):
         """处理推荐结果"""
-        # 重新启用按钮
+        # 推荐和生成按钮恢复
         self.recommend_btn.setEnabled(True)
+        self.generate_btn.setEnabled(True)
         self.progress_bar.setVisible(False)
         
         if result["status"] == "failed":
