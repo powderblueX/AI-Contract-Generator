@@ -74,13 +74,13 @@ AI-Contract-Generator/
 ```
 
 ## 核心技术栈
-- **前端框架**：PyQt5 5.15.4
+- **前端框架**：PyQt5 5.15.11
 - **后端语言**：Python 3.9.21
 - **自然语言处理**：
   - SentenceTransformers 2.2.2（文本嵌入）
-  - FAISS 1.7.2（向量检索）
+  - FAISS 1.10.0（向量检索）
 - **文档处理**：
-  - python-docx 0.8.11（Word文档操作）
+  - python-docx 1.1.0（Word文档操作）
   - docxtpl 0.16.7（Word模板渲染）
 - **AI模型**：通义千问（qwen-turbo）
 - **依赖管理**：Conda

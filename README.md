@@ -78,11 +78,11 @@ contract_generation/
 
 ## Core Technology Stack
 
-- **Frontend Framework**: PyQt5 5.15.4
+- **Frontend Framework**: PyQt5 5.15.11
 - **Backend Language**: Python 3.9.21
 - **Natural Language Processing**:
   - SentenceTransformers 2.2.2 (Text embedding)
-  - FAISS 1.7.2 (Vector search)
+  - FAISS 1.10.0 (Vector search)
 - **Document Processing**:
   - python-docx 0.8.11 (Word document operations)
   - docxtpl 0.16.7 (Word template rendering)
