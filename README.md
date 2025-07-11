@@ -46,6 +46,8 @@ The Contract Generation System is an AI-powered automated contract creation plat
 
 ## Project Structure
 
+The following is a detailed description of the main directories of the system:
+
 ```
 contract_generation/
 ├── README.md                   # Project documentation
@@ -74,7 +76,58 @@ contract_generation/
 │   ├── 技术文档.md             # Technical docs (Chinese)
 │   └── 用户手册.md             # User guide (Chinese)
 └── script/                     # Utility scripts
+    ├── getPlaceholder.py       # Placeholder extraction tool
+    ├── rag.py                  # Vector retrieval implementation
+    ├── scrap.md                # Contract scraping instructions
+    ├── tranDocx.py             # Document format conversion tool
+    ├── tranKeywords.py         # Keyword extraction tool
+    └── tranTemplate.py         # Template placeholder generation tool
 ```
+
+## Main Application Directory (demo/)
+
+The core functionality implementation directory containing the following submodules:
+
+- **contracts/**: Contract-related resource storage
+  - `generated/`: Stores automatically generated contract files
+  - `template/`: Original contract template files
+  - `tran_template/`: Transformed templates with placeholders
+
+- **core/**: System core configuration
+  - `config.py`: Global configuration parameters, including API key management
+
+- **embed_model/**: Text embedding models and vector data
+  - `all-MiniLM-L6-v2/`: SentenceTransformer pre-trained model
+  - `template_embeddings.pt`: Template vector data
+
+- **services/**: Business logic services
+  - `contract.py`: Core contract processing logic
+  - `GenerationWorker.py`: Contract generation worker thread
+  - `RecommendationWorker.py`: Template recommendation worker thread
+
+- **environment.yml**: Conda environment dependency configuration
+- **run.bat**: Windows environment startup script
+- **demo.py**: Application entry point
+
+## Documentation Directory (documentation/)
+
+Project documentation storage directory containing technical documentation and user manuals in both languages:
+
+- **Technical Documentation.md**: English technical documentation
+- **User Manual.md**: English user manual
+- **技术文档.md**: Chinese technical documentation
+- **用户手册.md**: Chinese user manual
+
+## Utility Scripts
+
+The script directory contains several helper scripts for various contract processing tasks:
+
+- **getPlaceholder.py**: Extracts placeholders from contract templates and saves them as JSON files. Used to identify user-fillable sections in templates, supporting automatic contract generation.
+- **rag.py**: Implements vector retrieval using SentenceTransformer and FAISS for knowledge base search. Enables fast retrieval and recommendation of contract-related knowledge.
+- **scrap.md**: Provides instructions for web scraping government and local contracts using the Web Scraper plugin, including configuration import and execution methods. Used for batch collection of contract template data.
+- **tranDocx.py**: Converts .doc/.wps files to .docx format in batches using unoconv tool, ensuring document format compatibility.
+- **tranKeywords.py**: Extracts keywords from contract content by calling the Tongyi Qianwen API, generating representative tags. Used for contract classification and quick retrieval.
+- **tranTemplate.py**: Converts raw contract templates into placeholder-containing formats using large language models, automating the template preprocessing process.
 
 ## Core Technology Stack
 

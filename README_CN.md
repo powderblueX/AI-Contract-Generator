@@ -43,6 +43,9 @@
 5. 查看并下载生成的合同文档
 
 ## 项目结构
+
+以下是系统主要目录的详细说明：
+
 ```
 AI-Contract-Generator/
 ├── README.md                   # 英文项目说明文档
@@ -68,10 +71,67 @@ AI-Contract-Generator/
 ├── documentation/              # 项目文档
 │   ├── Technical Documentation.md # 英文技术文档
 │   ├── User Manual.md          # 英文用户手册
-│   ├── 技术文档.md             # 中文技术文档
-│   └── 用户手册.md             # 中文用户手册
+│   ├── 技术文档.md              # 中文技术文档
+│   └── 用户手册.md              # 中文用户手册
 └── script/                     # 辅助脚本
+    ├── getPlaceholder.py       # 占位符提取工具
+    ├── rag.py                  # 向量检索实现
+    ├── scrap.md                # 合同抓取说明
+    ├── tranDocx.py             # 文档格式转换工具
+    ├── tranKeywords.py         # 关键词提取工具
+    └── tranTemplate.py         # 模板占位符生成工具
+
 ```
+
+## 应用程序主目录 (demo/)
+
+应用程序的核心功能实现目录，包含以下子模块：
+
+- **contracts/**：合同相关资源存储
+  - `generated/`：存放自动生成的合同文件
+  - `template/`：原始合同模板文件
+  - `tran_template/`：经过转换的带占位符的模板
+
+- **core/**：系统核心配置
+  - `config.py`：全局配置参数，包括API密钥管理
+
+- **embed_model/**：文本嵌入模型及向量数据
+  - `all-MiniLM-L6-v2/`：SentenceTransformer预训练模型
+  - `template_embeddings.pt`：模板向量数据
+
+- **services/**：业务逻辑服务
+  - `contract.py`：合同处理核心逻辑
+  - `GenerationWorker.py`：合同生成工作线程
+  - `RecommendationWorker.py`：模板推荐工作线程
+
+- **environment.yml**：Conda环境依赖配置
+- **run.bat**：Windows环境启动脚本
+- **demo.py**：应用程序入口文件
+
+## 文档目录 (documentation/)
+
+项目文档存储目录，包含中英文技术文档和用户手册：
+
+- **Technical Documentation.md**：英文技术文档
+- **User Manual.md**：英文用户手册
+- **技术文档.md**：中文技术文档
+- **用户手册.md**：中文用户手册
+
+## 辅助脚本说明
+
+script目录包含多个辅助脚本，用于合同处理的各个环节：
+
+- **getPlaceholder.py**：从合同模板中提取占位符并保存为JSON文件。用于识别模板中需要用户填写的部分，为自动生成合同提供支持。
+
+- **rag.py**：实现基于SentenceTransformer和FAISS的向量检索功能，构建合同知识库并支持相似性查询。用于合同相关知识的快速检索和推荐。
+
+- **scrap.md**：提供使用Web Scraper插件抓取部委和地方合同的步骤说明，包括配置导入和执行方法。用于批量获取合同范本数据。
+
+- **tranDocx.py**：使用unoconv工具将.doc或.wps格式文件批量转换为.docx格式，确保文档格式兼容性。
+
+- **tranKeywords.py**：调用通义千问API从合同内容中提取关键词，生成代表性标签。用于合同分类和快速检索。
+
+- **tranTemplate.py**：利用大模型将原始合同范本转换为含占位符的模板格式，自动化模板预处理过程。
 
 ## 核心技术栈
 - **前端框架**：PyQt5 5.15.11
